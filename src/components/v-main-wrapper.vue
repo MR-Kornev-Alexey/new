@@ -1,6 +1,5 @@
 <template>
   <div class="v-main-wrapper">
-   <h1>Main wrapper !</h1>
     <v-catalog/>
     <v-cart/>
   </div>
@@ -18,14 +17,9 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .v-main-wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   max-width: 900px;
   margin: 0 auto;
-  padding-bottom: 10px;
-}
+ }
 </style>
