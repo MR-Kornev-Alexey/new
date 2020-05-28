@@ -1,11 +1,14 @@
 <template>
   <div class="v-catalog">
     <h1>Catalog!</h1>
-    <v-catalog-item
-      v-for="product in products"
-      :key="product.article"
-      v-bind:product_data="product"
-    />
+    <div class="v-catalog__list">
+      <v-catalog-item
+        v-for="product in products"
+        :key="product.article"
+        v-bind:product_data="product"
+        @sendArticle="showArticle"
+      />
+    </div>
   </div>
 </template>
 
@@ -69,18 +72,58 @@ export default {
         }
       ]
     }
+  },
+  methods: {
+    showArticle (data) {
+      console.log(data)
+    }
   }
 }
 </script>
 
 <style scoped lang="scss">
-  .v-catalog{
-    &__list{
+  .v-catalog {
+    &__list {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
     }
+
+    &__link_to_cart {
+      position: fixed;
+      top: 80px;
+      right: 10px;
+      padding: $padding*2;
+      border: solid 1px #aeaeae;
+      background: #ffffff;
+    }
+  }
+
+  .filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .range-slider {
+    width: 200px;
+    margin: auto 16px;
+    text-align: center;
+    position: relative;
+  }
+
+  .range-slider svg, .range-slider input[type=range] {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
+
+  input[type=range]::-webkit-slider-thumb {
+    z-index: 2;
+    position: relative;
+    top: 2px;
+    margin-top: -7px;
   }
 
 </style>

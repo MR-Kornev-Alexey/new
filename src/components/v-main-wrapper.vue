@@ -21,5 +21,6 @@ export default {
 .v-main-wrapper {
   max-width: 900px;
   margin: 0 auto;
+  text-align: center;
  }
 </style>

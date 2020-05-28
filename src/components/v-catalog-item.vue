@@ -1,10 +1,10 @@
 <template>
-    <div class="v-catalog-item">
-      <img height="150px" :src=" require('../assets/images/' + product_data.image) " alt="image">
-      <p class="v-catalog__name">{{product_data.name}}</p>
-      <p class="v-catalog__price">{{product_data.price}} </p>
-      <button class="v-catalog__item__add_to_cart_btn btn">add to cart</button>
-    </div>
+  <div class="v-catalog-item">
+    <img height="150px" :src=" require('../assets/images/' + product_data.image) " alt="image">
+    <p class="v-catalog__name">{{product_data.name}}</p>
+    <p class="v-catalog__price">{{product_data.price}} Р.</p>
+    <button class="v-catalog__item__add_to_cart_btn btn" @click="sendDataToParents">add to cart</button>
+  </div>
 </template>
 
 <script>
@@ -17,6 +17,14 @@ export default {
         return {}
       }
     }
+  },
+  data () {
+    return {}
+  },
+  methods: {
+    sendDataToParents () {
+      this.$emit('sendArticle', this.product_data.article)
+    }
   }
 }
 </script>
@@ -27,6 +35,9 @@ export default {
     box-shadow: 0 0 8px 0 #e0e0e0;
     padding: $padding*2;
     margin-bottom: $margin*2;
-     }
 
+    &__image {
+      width: 100px;
+    }
+  }
 </style>
