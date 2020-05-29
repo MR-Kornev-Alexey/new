@@ -1,6 +1,6 @@
 <template>
   <div class="v-catalog-item">
-    <img height="150px" :src=" require('../assets/images/' + product_data.image) " alt="image">
+    <img height="150px" :src=" require('../../assets/images/' + product_data.image) " alt="image">
     <p class="v-catalog__name">{{product_data.name}}</p>
     <p class="v-catalog__price">{{product_data.price}} Р.</p>
     <button class="v-catalog__item__add_to_cart_btn btn" @click="addToCart">add to cart</button>
