@@ -1,4 +1,7 @@
 export default {
+  SET_USERS_TO_STATE: (state, users) => {
+    state.users = users
+  },
   SET_PRODUCTS_TO_STATE: (state, products) => {
     state.products = products
   },

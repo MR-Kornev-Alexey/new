@@ -4,5 +4,8 @@ export default {
   },
   CART (state) {
     return state.cart
+  },
+  USERS (state) {
+    return state.users
   }
 }
