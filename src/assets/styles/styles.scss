@@ -6,8 +6,9 @@ $material-icons-font-path: '~material-icons/iconfont/';
 
 .btn{
   padding: $padding $padding*2;
-  background: #aeaeae;
+  background: $maincolor;
+  color: white;
   border: 0;
-  border-radius: $radius*2;
+  border-radius: $radius;
   cursor: pointer;
 }

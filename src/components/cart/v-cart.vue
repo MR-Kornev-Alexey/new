@@ -77,8 +77,8 @@ export default {
 
   .v-catalog__link_to_cart {
     position: fixed;
-    top: 80px;
-    right: 10px;
+    top: 30px;
+    right: 40px;
     padding: $padding*2;
     border: solid 1px #aeaeae;
     background: #ffffff;
