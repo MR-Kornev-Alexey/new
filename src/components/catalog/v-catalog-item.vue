@@ -1,9 +1,21 @@
 <template>
   <div class="v-catalog-item">
-    <img height="150px" :src=" require('../../assets/images/' + product_data.image) " alt="image">
-    <p class="v-catalog__name">{{product_data.name}}</p>
-    <p class="v-catalog__price">{{product_data.price}} Р.</p>
-    <button class="v-catalog__item__add_to_cart_btn btn" @click="addToCart">add to cart</button>
+    <div class="v-catalog-item__image">
+      <a target="_blank" :href="`https://klvr.link/` + relisData[0].page_url ">
+      <img  :src=" `https://storage.yandexcloud.net/klever-images/` + relisData[0].main_image_url " alt="image"></a>
+    </div>
+    <div class="v-catalog-item__name">
+  {{relisData[0].title_name}}
+    </div>
+    <div class="v-catalog-item__title">
+      <a target="_blank" :href="`https://klvr.link/` + relisData[0].page_url ">
+        {{relisData[0].title}}</a>
+    </div>
+    <div class="v-catalog-item__number">
+      Линков:
+    </div>
+
+<!--    <button class="v-catalog__item__add_to_cart_btn btn" @click="addToCart">add to cart</button>-->
   </div>
 </template>
 
@@ -11,8 +23,8 @@
 export default {
   name: 'v-catalog-item',
   props: {
-    product_data: {
-      type: Object,
+    relisData: {
+      type: Array,
       default () {
         return {}
       }
@@ -23,7 +35,7 @@ export default {
   },
   methods: {
     addToCart () {
-      this.$emit('addToCart', this.product_data)
+      this.$emit('addToCart', this.relisData)
     }
   }
 }
@@ -31,13 +43,34 @@ export default {
 
 <style scoped lang="scss">
   .v-catalog-item {
-    flex-basis: 25%;
+    flex-basis: 20%;
     box-shadow: 0 0 8px 0 #e0e0e0;
     padding: $padding*2;
     margin-bottom: $margin*2;
+    font-size: 14px;
 
-    &__image {
-      width: 100px;
+    &__image img {
+      width: 140px;
+      height: 140px;
+    }
+    &__name {
+      height: 40px;
+    }
+    &__title {
+      height: 60px;
+      a {
+        text-decoration: none;
+        color: #5e5e5e;
+      }
+      a:hover {
+        transition: all .5s ease-in-out;
+        color: #3d498c;
+      }
+    }
+    &__number{
+      color: brown;
+      font-weight: bold;
+      height: 10px;
     }
   }
 </style>

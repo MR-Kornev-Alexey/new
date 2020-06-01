@@ -1,16 +1,22 @@
 <template>
   <div class="v-catalog">
     <router-link :to="{name: 'cart', params:{cart_data: CART }}">
-      <div class="v-catalog__link_to_cart">Cart: {{CART.length}}</div>
     </router-link>
-    <h1>Catalog!</h1>
+    <h1>База клипов!</h1>
     <div class="v-catalog__list">
       <v-catalog-item
-        v-for="product in PRODUCTS"
-        :key="product.article"
-        v-bind:product_data="product"
-        @addToCart="addToCart"
-      />
+        v-for="item in LINKS"
+        :key="item[0].page_url"
+        v-bind:relisData="item"
+       />
+    </div>
+    <div class="v-table__pagination">
+      <div class="page"
+           v-for="page in pages"
+           :key="page"
+           @click="pageClick(page)"
+      >{{page}}
+      </div>
     </div>
   </div>
 </template>
@@ -24,28 +30,50 @@ export default {
     vCatalogItem
   },
   data () {
-    return {}
+    return {
+      userPerPage: 10,
+      pageNumber: 1
+    }
   },
   computed: {
     ...mapGetters([
-      'PRODUCTS',
-      'CART'
-    ])
+      'LINKS',
+      'CART',
+      'PAGES'
+    ]),
+    pages () {
+      // return 2
+      console.log('pages... ')
+
+      const num = this.PAGES.counter / 10
+      return Math.ceil(+num)
+    }
   },
   methods: {
     ...mapActions([
-      'GET_PRODUCTS_FROM_API',
+      'GET_LINKS_FROM_API',
+      'GET_NUMBER_PAGES_FROM_API',
       'ADD_TO_CART'
     ]),
-    addToCart (data) {
-      this.ADD_TO_CART(data)
+    pageClick (page) {
+      this.pageNumber = page
     }
   },
   mounted () {
-    this.GET_PRODUCTS_FROM_API()
+    this.GET_LINKS_FROM_API()
       .then((resp) => {
         if (resp.data) {
           // console.log('data arrived')
+        }
+      }).catch(
+        (error) => {
+          console.log(error)
+          return error
+        }
+      )
+    this.GET_NUMBER_PAGES_FROM_API()
+      .then((resp) => {
+        if (resp.data) {
         }
       }).catch(
         (error) => {
@@ -75,31 +103,21 @@ export default {
       background: #ffffff;
     }
   }
-
-  .filters {
+  .v-catalog__pagination {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
   }
-
-  .range-slider {
-    width: 200px;
-    margin: auto 16px;
-    text-align: center;
-    position: relative;
+  .link-page{
+    padding: 8px;
+    border: 1px solid #aeaeae;
   }
-
-  .range-slider svg, .range-slider input[type=range] {
-    position: absolute;
-    left: 0;
-    bottom: 0;
+  .link-page:hover {
+    background: cadetblue;
   }
-
-  input[type=range]::-webkit-slider-thumb {
-    z-index: 2;
-    position: relative;
-    top: 2px;
-    margin-top: -7px;
+  .link-page__selected {
+    background: cadetblue;
+    color: white;
   }
 
 </style>

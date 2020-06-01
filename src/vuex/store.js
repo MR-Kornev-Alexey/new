@@ -8,11 +8,12 @@ import getters from './getters/getters'
 const actions = { ...commandActions, ...apiRequest }
 
 Vue.use(Vuex)
+
 export default new Vuex.Store({
   state: {
-    products: [],
-    cart: [],
-    users: []
+    links: [],
+    users: [],
+    number: {}
   },
   mutations,
   actions,

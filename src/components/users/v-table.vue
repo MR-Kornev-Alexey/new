@@ -16,9 +16,8 @@
         />
       </div>
       <div class="v-table__pagination">
-        <div class="page"
+        <div class="page "
         v-for="page in pages"
-
           :key="page"
             @click="pageClick(page)"
 
@@ -111,14 +110,18 @@ export default {
     justify-content: center;
   }
   .page{
-    padding: 8px;
+    padding-top: 6px;
+    width: 36px;
+    height: 36px;
     border: 1px solid #aeaeae;
+    cursor: pointer;
   }
   .page:hover {
-    background: cadetblue;
+    background: $maincolor;
+    color: white;
   }
   .page__selected {
-    background: cadetblue;
+    background: $maincolor;
     color: white;
   }
 </style>

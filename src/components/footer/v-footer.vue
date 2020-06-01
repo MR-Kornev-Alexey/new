@@ -12,6 +12,11 @@ export default {
 }
 </script>
 
-<style scoped>
+<style  lang="scss" scoped>
+  .v-footer {
+    padding: $padding*2;
+    display: flex;
+    justify-content: center;
+      }
 
 </style>
