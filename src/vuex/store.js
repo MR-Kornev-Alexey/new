@@ -13,7 +13,7 @@ export default new Vuex.Store({
   state: {
     links: [],
     users: [],
-    number: {}
+    number: { counter: 10 }
   },
   mutations,
   actions,

@@ -6,7 +6,7 @@
     <div class="v-catalog__list">
       <v-catalog-item
         v-for="item in LINKS"
-        :key="item[0].page_url"
+        :key="item.pageUrl"
         v-bind:relisData="item"
        />
     </div>
@@ -42,11 +42,8 @@ export default {
       'PAGES'
     ]),
     pages () {
-      // return 2
-      console.log('pages... ')
-
-      const num = this.PAGES.counter / 10
-      return Math.ceil(+num)
+      const num = Math.ceil(parseInt(this.PAGES.counter) / 10)
+      return num > 0 ? num : 1
     }
   },
   methods: {

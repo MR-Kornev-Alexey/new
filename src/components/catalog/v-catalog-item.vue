@@ -1,18 +1,18 @@
 <template>
   <div class="v-catalog-item">
     <div class="v-catalog-item__image">
-      <a target="_blank" :href="`https://klvr.link/` + relisData[0].page_url ">
-      <img  :src=" `https://storage.yandexcloud.net/klever-images/` + relisData[0].main_image_url " alt="image"></a>
+      <a target="_blank" :href="`https://klvr.link/` + relisData.pageUrl ">
+      <img  :src=" `https://storage.yandexcloud.net/klever-images/` + relisData.image " alt="image"></a>
     </div>
     <div class="v-catalog-item__name">
-  {{relisData[0].title_name}}
+  {{relisData.titleName}}
     </div>
     <div class="v-catalog-item__title">
-      <a target="_blank" :href="`https://klvr.link/` + relisData[0].page_url ">
-        {{relisData[0].title}}</a>
+      <a target="_blank" :href="`https://klvr.link/` + relisData.pageUrl ">
+        {{relisData.title}}</a>
     </div>
     <div class="v-catalog-item__number">
-      Линков:
+      Линков: {{relisData.count}}
     </div>
 
 <!--    <button class="v-catalog__item__add_to_cart_btn btn" @click="addToCart">add to cart</button>-->
@@ -24,7 +24,7 @@ export default {
   name: 'v-catalog-item',
   props: {
     relisData: {
-      type: Array,
+      type: Object,
       default () {
         return {}
       }

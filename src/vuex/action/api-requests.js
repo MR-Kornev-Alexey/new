@@ -27,7 +27,7 @@ export default {
       })
   },
   GET_NUMBER_PAGES_FROM_API ({ commit }) {
-    return axios.get('http://localhost:3000/getnumber')
+    return axios.get('https://klvr.link/getnumber')
       .then((resp) => {
         console.log(resp.data)
         commit('SET_NUMBER_PAGES_TO_STATE', resp.data)
