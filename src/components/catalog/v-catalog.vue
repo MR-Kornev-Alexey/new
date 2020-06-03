@@ -14,6 +14,7 @@
       <div class="page"
            v-for="page in pages"
            :key="page"
+           :class="{'link-page__selected': page === pageNumber}"
            @click="pageClick(page)"
       >{{page}}
       </div>
@@ -31,7 +32,7 @@ export default {
   },
   data () {
     return {
-      userPerPage: 10,
+      linksPerPage: 10,
       pageNumber: 1
     }
   },
@@ -54,10 +55,21 @@ export default {
     ]),
     pageClick (page) {
       this.pageNumber = page
+      this.GET_LINKS_FROM_API({ pageNumber: page, linksPerPage: 10 })
+        .then((resp) => {
+          if (resp.data) {
+            // console.log('data arrived')
+          }
+        }).catch(
+          (error) => {
+            console.log(error)
+            return error
+          }
+        )
     }
   },
   mounted () {
-    this.GET_LINKS_FROM_API()
+    this.GET_LINKS_FROM_API({ pageNumber: 1, linksPerPage: 10 })
       .then((resp) => {
         if (resp.data) {
           // console.log('data arrived')
@@ -110,10 +122,10 @@ export default {
     border: 1px solid #aeaeae;
   }
   .link-page:hover {
-    background: cadetblue;
+    background: $maincolor;
   }
   .link-page__selected {
-    background: cadetblue;
+    background: $maincolor;
     color: white;
   }
 

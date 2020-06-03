@@ -14,8 +14,11 @@ export default {
         return error
       })
   },
-  GET_LINKS_FROM_API ({ commit }) {
-    return axios.get('https://klvr.link/getall')
+  GET_LINKS_FROM_API ({ commit }, { pageNumber, linksPerPage }) {
+    const url = 'https://klvr.link/getall'
+    // + '?pageNumber=' + pageNumber + '&linksPerPage=' + linksPerPage
+    const data = { pageNumber: pageNumber, linksPerPage: linksPerPage }
+    return axios.post(url, data)
       .then((resp) => {
         console.log(resp.data)
         commit('SET_LINKS_TO_STATE', resp.data)
@@ -27,7 +30,8 @@ export default {
       })
   },
   GET_NUMBER_PAGES_FROM_API ({ commit }) {
-    return axios.get('https://klvr.link/getnumber')
+    const url = 'https://klvr.link/getnumber'
+    return axios.get(url)
       .then((resp) => {
         console.log(resp.data)
         commit('SET_NUMBER_PAGES_TO_STATE', resp.data)
