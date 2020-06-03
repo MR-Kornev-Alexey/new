@@ -49,13 +49,13 @@ export default {
   },
   methods: {
     ...mapActions([
-      'GET_LINKS_FROM_API',
+      'POST_LINKS_FROM_API',
       'GET_NUMBER_PAGES_FROM_API',
       'ADD_TO_CART'
     ]),
     pageClick (page) {
       this.pageNumber = page
-      this.GET_LINKS_FROM_API({ pageNumber: page, linksPerPage: 10 })
+      this.POST_LINKS_FROM_API({ pageNumber: page, linksPerPage: 10 })
         .then((resp) => {
           if (resp.data) {
             // console.log('data arrived')
@@ -69,7 +69,7 @@ export default {
     }
   },
   mounted () {
-    this.GET_LINKS_FROM_API({ pageNumber: 1, linksPerPage: 10 })
+    this.POST_LINKS_FROM_API({ pageNumber: 1, linksPerPage: 10 })
       .then((resp) => {
         if (resp.data) {
           // console.log('data arrived')

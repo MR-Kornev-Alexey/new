@@ -14,7 +14,7 @@ export default {
         return error
       })
   },
-  GET_LINKS_FROM_API ({ commit }, { pageNumber, linksPerPage }) {
+  POST_LINKS_FROM_API ({ commit }, { pageNumber, linksPerPage }) {
     const url = 'https://klvr.link/getall'
     // + '?pageNumber=' + pageNumber + '&linksPerPage=' + linksPerPage
     const data = { pageNumber: pageNumber, linksPerPage: linksPerPage }
